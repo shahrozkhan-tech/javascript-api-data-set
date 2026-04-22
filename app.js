@@ -1089,7 +1089,7 @@ function recipesRender(data, reset = false) {
   }
 }
 
-// opt filter start
+
 let difficultyOpt = [];
 let cuisineOpt = [];
 
@@ -1109,9 +1109,7 @@ for (let i = 0; i < cuisineOpt.length; i++) {
   cuisine.innerHTML += ` <option value="${cuisineOpt[i]}">${cuisineOpt[i]}</option>`;
 }
 
-// opt filter end
 
-//recipesFilter
 function filter() {
   let difficultyValue = difficulty.value;
   let cuisineValue = cuisine.value;
@@ -1154,6 +1152,6 @@ loadMore.addEventListener("click", () => {
 });
 
 
-// defult Render
+
 
 recipesRender(recipes, true);
