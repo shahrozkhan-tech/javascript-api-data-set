@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+select,
+input {
+  padding: 12px 18px;
+  margin: 10px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  outline: none;
+  background: rgba(255,255,255,0.05);
+  color: #e2e8f0;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  font-size: 14px;
+  appearance: none;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+select option {
+  background: #020617;
+  color: #e2e8f0;
+}
+
+select {
+  background-image: linear-gradient(45deg, transparent 50%, #38bdf8 50%),
+                    linear-gradient(135deg, #38bdf8 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%,
+                       calc(100% - 12px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  width: 200px;
+}
+
+select:hover,
+input:hover {
+  border-color: #38bdf8;
+}
+
+select:focus,
+input:focus {
+  box-shadow: 0 0 15px rgba(56,189,248,0.6);
+  border-color: #38bdf8;
+  transform: scale(1.05);
+}
+#search {
+  width: 200px;
+}
+
+#search:focus {
+  width: 260px;
+}
+
+select, input {
+  animation: fadeSlide 0.6s ease forwards;
+  opacity: 0;
+}
+select:nth-child(1) { animation-delay: 0.1s; }
+select:nth-child(2) { animation-delay: 0.2s; }
+input { animation-delay: 0.3s; }
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#show {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+.box {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 15px;
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+
+  transform: translateY(30px) scale(0.95);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  transition: all 0.4s ease;
+}
+.box:nth-child(1) { animation-delay: 0.1s; }
+.box:nth-child(2) { animation-delay: 0.2s; }
+.box:nth-child(3) { animation-delay: 0.3s; }
+.box:nth-child(4) { animation-delay: 0.4s; }
+.box:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: rgba(56,189,248,0.5);
+  box-shadow: 0 15px 40px rgba(56,189,248,0.3);
+}
+.box img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 10px;
+  filter: grayscale(50%);
+  transition: 0.4s ease;
+}
+.box:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.08) rotate(1deg);
+}
+.box h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+.box p {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #94a3b8;
+}
+#load-more {
+  margin: 40px auto;
+  display: block;
+  padding: 12px 30px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #020617;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#load-more:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(56,189,248,0.7);
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#38bdf8, #0ea5e9);
+  border-radius: 10px;
+}
+  .no-data {
+  text-align: center;
+  margin-top: 50px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.no-data img {
+  width: 150px;
+  opacity: 0.8;
+  animation: float 2s infinite ease-in-out;
+}
+
+.no-data h2 {
+  font-size: 24px;
+  margin-top: 10px;
+  color: #ff4d4d;
+}
+
+.no-data p {
+  color: gray;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating emoji/image */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+    </style>
+</head>
+<body>
+    
+<select name="" id="difficulty">
+    <option value="all">Difficulty Select</option>
+</select>
+
+<select name="" id="cuisine">
+    <option value="all">Cuisine Select</option>
+</select>
+
+
+<input type="text" id="search" >
+
+
+
+<div id="show">
+
+
+   
+</div>
+
+<button id="load-more">Load More</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
